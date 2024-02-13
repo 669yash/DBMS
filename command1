@@ -1,0 +1,21 @@
+describe tab;
+select * from tab;
+select * from employees;
+select employee_id, first_name, salary from employees where salary between 9000 and 20000;
+select employee_id, first_name, salary from employees where salary in (9000,20000);
+select * from employees order by salary asc;
+select * from employees order by salary desc;
+select * from employees where first_name like 'A%';
+//find the number of employees in each department
+select count(*) from employees group by department_id;
+//find the number of employees in each department and arrange according to number of employees
+select count(*)  from employees group by department_id order by count(*) asc;
+//find the departments whose number of employees are greater than 30;
+select count(*) from employees group by department_id having count(*)>30;
+select count(*) from employees group by department_id having count(*)>30 order by department_id;
+//display dept name to which the emp 101 belongs(joining 2 tables)
+select employee_id,department_name from employees, departments where employees.department_id=departments.department_id and employee_id=101;
+select * from departments;
+//display the names of employees who belong to executive department
+select FIRST_NAME, department_name from employees, departments where employees.department_id=departments.department_id and department_name='Executive';
+select FIRST_NAME, department_name from employees inner join departments on employees.department_id=departments.department_id where department_name='Executive';
